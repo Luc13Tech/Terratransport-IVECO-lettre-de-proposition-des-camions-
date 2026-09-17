@@ -13,6 +13,17 @@ body {
   background-color: #f8fafc;
 }
 
+/* Cachet Terratransport : l'image est servie depuis /public/stamp.png.
+   Le sélecteur cible uniquement le bloc de signature Terratransport. */
+.mt-12 > div:last-child > div.border-b {
+  position: relative;
+  height: 5rem;
+  background-image: url('/stamp.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 /* Optimisation pour l'impression native (Ctrl+P) */
 @media print {
   .no-print, nav, button, header {
