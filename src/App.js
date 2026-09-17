@@ -162,8 +162,6 @@ export default function App() {
     { name: t.tranche4, qty: 30, delay: t.delay4 },
   ];
 
-  const totalTrucks = tranches.reduce((acc, item) => acc + item.qty, 0);
-
   const handleDownloadPdf = async () => {
     const element = documentRef.current;
     const canvas = await html2canvas(element, {
@@ -267,14 +265,14 @@ export default function App() {
         </div>
       </div>
 
-      {/* DOCUMENT OFFICIEL À IMPRIMER OU EXPORTER */}
+      {/* DOCUMENT OFFICIEL A4 */}
       <div className="max-w-4xl mx-auto">
         <div
           ref={documentRef}
           className="bg-white p-10 rounded-none shadow-xl border border-slate-200 text-slate-900 mx-auto"
           style={{ width: '210mm', minHeight: '297mm', boxSizing: 'border-box' }}
         >
-          {/* ENTÊTE DU DOCUMENT */}
+          {/* ENTÊTE */}
           <div className="flex justify-between items-start border-b-2 border-blue-900 pb-6 mb-6">
             <div>
               <img
@@ -293,14 +291,14 @@ export default function App() {
             </div>
           </div>
 
-          {/* TITRE PRINCIPAL DU DOCUMENT */}
+          {/* BANNIÈRE DE TITRE */}
           <div className="bg-blue-900 text-white p-4 rounded-lg mb-6 shadow-sm border-l-8 border-blue-600">
             <h2 className="text-center text-base font-bold tracking-wide uppercase flex items-center justify-center gap-2">
               <Truck className="w-5 h-5" /> {t.title}
             </h2>
           </div>
 
-          {/* INFOS PARTENARIAT ET DESTINATAIRE */}
+          {/* PARTENAIRES */}
           <div className="grid grid-cols-2 gap-6 mb-6 text-sm bg-slate-50 p-4 rounded-lg border border-slate-200">
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t.issuer}</p>
@@ -313,7 +311,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* OBJET DU DOCUMENT */}
+          {/* OBJET */}
           <div className="mb-6">
             <h3 className="text-xs font-bold text-slate-800 mb-2 border-l-4 border-blue-700 pl-2 uppercase tracking-wide">
               {t.summaryTitle}
@@ -323,7 +321,7 @@ export default function App() {
             </p>
           </div>
 
-          {/* TABLEAU DES TRANCHES DE LIVRAISON (SANS PRIX) */}
+          {/* TABLEAU DES TRANCHES SANS PRIX */}
           <div className="mb-6">
             <h3 className="text-xs font-bold text-slate-800 mb-3 border-l-4 border-blue-700 pl-2 uppercase tracking-wide flex items-center gap-2">
               <Clock className="w-4 h-4 text-blue-700" /> {t.scheduleTitle}
@@ -362,7 +360,7 @@ export default function App() {
             </table>
           </div>
 
-          {/* VISUEL CAMION & ENGAGEMENTS LOGISTIQUES */}
+          {/* VISUEL & ENGAGEMENTS */}
           <div className="grid grid-cols-2 gap-6 mb-8 items-center bg-slate-50 p-4 rounded-lg border border-slate-200">
             <div>
               <h4 className="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide flex items-center gap-1.5">
@@ -394,7 +392,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* BLOC SIGNATURES & CACHET */}
+          {/* SIGNATURES */}
           <div className="mt-12 pt-6 border-t border-slate-300 grid grid-cols-2 gap-8 text-center">
             <div>
               <p className="text-xs font-bold text-slate-700 uppercase mb-8">{t.signIveco}</p>
@@ -421,4 +419,4 @@ export default function App() {
       </div>
     </div>
   );
-            }
+                }
