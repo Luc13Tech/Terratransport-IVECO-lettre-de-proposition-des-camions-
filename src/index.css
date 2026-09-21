@@ -2,34 +2,401 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Stili globali */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
-/* Ottimizzazione per la stampa nativa (Ctrl+P) */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #eef1f4;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   APPLICATION
+   ========================================================= */
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.no-print {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   DOCUMENT A4
+   ========================================================= */
+
+.print-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  padding: 18mm;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid #d1d5db;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================================
+   HEADER / LOGO
+   ========================================================= */
+
+.document-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 12mm;
+}
+
+.document-logo {
+  display: block;
+  max-width: 55mm;
+  max-height: 28mm;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 8mm auto;
+}
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.document-title {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: 18pt;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin: 0 0 8mm 0;
+}
+
+.document-subtitle {
+  text-align: center;
+  font-size: 12pt;
+  margin-bottom: 8mm;
+}
+
+/* =========================================================
+   INFORMATIONS DOCUMENT
+   ========================================================= */
+
+.document-info {
+  width: 100%;
+  margin-bottom: 8mm;
+}
+
+.document-info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.document-info td {
+  border: 1px solid #222;
+  padding: 3mm;
+  vertical-align: middle;
+  font-size: 11pt;
+}
+
+.document-info td:first-child {
+  width: 35%;
+  font-weight: 700;
+  background: #f5f5f5;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.document-section {
+  margin-top: 7mm;
+  margin-bottom: 7mm;
+}
+
+.document-section-title {
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 0 0 4mm 0;
+  text-transform: uppercase;
+}
+
+.document-paragraph {
+  font-size: 11.5pt;
+  line-height: 1.55;
+  text-align: justify;
+  margin: 0 0 4mm 0;
+}
+
+/* =========================================================
+   CAMION IVECO
+   ========================================================= */
+
+.truck-image-container {
+  width: 100%;
+  text-align: center;
+  margin: 8mm auto;
+  padding: 0;
+}
+
+.truck-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 72mm;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   TABLEAU DES TRANCHES
+   ========================================================= */
+
+.delivery-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5mm;
+  margin-bottom: 7mm;
+  page-break-inside: avoid;
+}
+
+.delivery-table th,
+.delivery-table td {
+  border: 1px solid #222;
+  padding: 3mm 2.5mm;
+  font-size: 10.5pt;
+  line-height: 1.35;
+  vertical-align: middle;
+}
+
+.delivery-table th {
+  font-weight: 700;
+  text-align: center;
+  background: #eeeeee;
+}
+
+.delivery-table td {
+  text-align: center;
+}
+
+.delivery-table td:nth-child(2),
+.delivery-table td:nth-child(4) {
+  text-align: left;
+}
+
+/* =========================================================
+   LISTE DES SPÉCIFICATIONS
+   ========================================================= */
+
+.specifications-list {
+  margin: 3mm 0 5mm 7mm;
+  padding-left: 6mm;
+}
+
+.specifications-list li {
+  font-size: 11pt;
+  line-height: 1.5;
+  margin-bottom: 2.5mm;
+}
+
+/* =========================================================
+   SIGNATURE / CACHET
+   ========================================================= */
+
+.signature-area {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12mm;
+  margin-top: 12mm;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.signature-box,
+.recipient-box {
+  min-height: 55mm;
+  position: relative;
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.signature-box h4,
+.recipient-box h4 {
+  margin: 0 0 5mm 0;
+  font-size: 11.5pt;
+  font-weight: 700;
+}
+
+.stamp-wrapper {
+  width: 100%;
+  height: 30mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4mm;
+  overflow: visible;
+}
+
+.stamp-image {
+  display: block;
+  max-width: 55mm;
+  max-height: 30mm;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.signature-line {
+  width: 75%;
+  height: 12mm;
+  margin: 4mm auto 0 auto;
+  border-bottom: 1px solid #111;
+}
+
+.signature-label {
+  font-size: 10.5pt;
+  margin-top: 3mm;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.document-footer {
+  width: 100%;
+  margin-top: 10mm;
+  padding-top: 4mm;
+  border-top: 1px solid #999;
+  text-align: center;
+  font-size: 9.5pt;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   ÉLÉMENTS ÉDITABLES
+   ========================================================= */
+
+input,
+textarea,
+select {
+  font-family: "Times New Roman", Times, serif;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLETTE / PETIT ÉCRAN
+   ========================================================= */
+
+@media screen and (max-width: 850px) {
+  body {
+    background: #eef1f4;
+  }
+
+  .print-container {
+    margin: 10px auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .print-container {
+    margin: 10px 0;
+  }
+
+  .signature-area {
+    grid-template-columns: 1fr;
+    gap: 10mm;
+  }
+}
+
+/* =========================================================
+   IMPRESSION A4
+   ========================================================= */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
 @media print {
-  .no-print, nav, button, header {
+  html,
+  body,
+  #root {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print,
+  nav,
+  button,
+  header {
     display: none !important;
   }
 
-  body, #root {
-    background: white !important;
+  .app {
+    width: 210mm;
+    min-height: 297mm;
     margin: 0 !important;
     padding: 0 !important;
   }
 
   .print-container {
-    width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 18mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .truck-image,
+  .document-logo,
+  .stamp-image {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .document-section,
+  .delivery-table,
+  .signature-area {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .delivery-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
